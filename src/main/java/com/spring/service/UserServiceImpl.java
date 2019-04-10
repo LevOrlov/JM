@@ -9,13 +9,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserServiсe {
+public class UserServiceImpl implements UserService {
 
     static final String URL_USERS = "http://localhost:8080/rest";
     static final String URL_ADD = "http://localhost:8080/rest/admin/add";

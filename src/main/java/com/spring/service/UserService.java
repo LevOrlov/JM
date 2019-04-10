@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface UserServiсe {
+public interface UserService {
     void addUser(User application);
 
     void deleteUser(int userId);

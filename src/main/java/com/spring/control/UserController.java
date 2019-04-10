@@ -1,6 +1,6 @@
 package com.spring.control;
 
-import com.spring.service.UserServiсe;
+import com.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
     @Autowired
-    private UserServiсe UserServiceImpl;
+    private UserService userService;
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ModelAndView userPage() {
@@ -25,9 +25,9 @@ public class UserController {
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
             name = userDetail.getUsername();
-            model.addObject("userProfile", UserServiceImpl.getUserByLogin(userDetail.getUsername()));
+            model.addObject("userProfile", userService.getUserByLogin(userDetail.getUsername()));
         }
-        model.addObject("userProfile", UserServiceImpl.getUserByLogin(name));
+        model.addObject("userProfile", userService.getUserByLogin(name));
         return model;
     }
 }
