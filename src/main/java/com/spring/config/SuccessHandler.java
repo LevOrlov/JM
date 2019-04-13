@@ -24,7 +24,7 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
         for (GrantedAuthority authority : authorities) {
             if (authority.getAuthority().equals("USER")) {
                 try {
-                    redirectStrategy.sendRedirect(arg0, arg1, "/user");
+                    redirectStrategy.sendRedirect(arg0, arg1, "/user1");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
