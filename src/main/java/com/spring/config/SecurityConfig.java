@@ -53,9 +53,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/static/**").permitAll();
         http.authorizeRequests()
                 .antMatchers("/").hasAuthority("ADMIN")
-                .anyRequest().authenticated().and().csrf().disable()
-                .formLogin().successHandler(successHandler).and().rememberMe();
-
+                .anyRequest().authenticated().and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/j_spring_security_check")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/thumhome")
+                .permitAll().successHandler(successHandler).and().rememberMe();
+        http.csrf().disable();
 
 
 

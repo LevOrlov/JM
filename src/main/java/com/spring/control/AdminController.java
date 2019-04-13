@@ -26,6 +26,11 @@ public class AdminController {
         model.addAttribute("addUserObject", new User());
         return "thumhome";
     }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(Model model) {
+        model.addAttribute("addUserObject", new User());
+        return "login";
+    }
 //todo куда отправляют ajax  запросы
 
     @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
