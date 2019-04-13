@@ -1,8 +1,11 @@
 package com.spring.config;
 
 
+import com.spring.model.UserDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +15,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -51,30 +56,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/resources/**").permitAll();
         http.authorizeRequests().antMatchers("/static/**").permitAll();
+        http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests()
-                .antMatchers("/").hasAuthority("ADMIN")
-                .anyRequest().authenticated().and()
+                .antMatchers("/")
+                .authenticated().and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/thumhome")
-                .permitAll().successHandler(successHandler).and().rememberMe();
+                .successHandler(successHandler).and().rememberMe();
         http.csrf().disable();
 
-
-
+    }
    /*   http
                 .authorizeRequests()
                 .anyRequest().permitAll().and().cors().and().csrf().disable();*/
 
-    }
 
     @Override
     public void configure(WebSecurity security) {
         security.ignoring().antMatchers("/resources/**", "/static/**");
     }
-
-
 }
