@@ -31,10 +31,6 @@ public class AdminController {
         model.addAttribute("addUserObject", new User());
         return "login";
     }
-    @RequestMapping(value = "/connect/google", method = RequestMethod.GET)
-    public String connectGoogle(Model model) {
-        return "/connect/google";
-    }
 
 //todo куда отправляют ajax  запросы
 

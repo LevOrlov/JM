@@ -40,6 +40,9 @@ public class User implements UserDetails {
         this.login = "";
         this.password = "";
     }
+    public User(String id) {
+        this.id = Integer.parseInt(id);
+    }
 
     public List<Role> getRoles() {
         return roles;

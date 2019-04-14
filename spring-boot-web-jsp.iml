@@ -98,10 +98,15 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-jwt:1.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.56" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.56" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-security:1.1.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-core:1.1.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-web:1.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-core:1.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-config:1.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-web:1.1.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-security:1.1.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.social:spring-social-google:1.0.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.github.scribejava:scribejava-apis:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.scribejava:scribejava-core:5.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.1.1.RELEASE" level="project" />

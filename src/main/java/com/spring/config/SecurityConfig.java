@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/resources/**").permitAll();
         http.authorizeRequests().antMatchers("/static/**").permitAll();
+        http.authorizeRequests().antMatchers("/", "/signup", "/login").permitAll();
         http.authorizeRequests()
                 .antMatchers("/")
                 .authenticated().and()
@@ -62,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/thumhome")
                 .successHandler(successHandler).and().rememberMe();
         http.csrf().disable();
-
     }
 
 
