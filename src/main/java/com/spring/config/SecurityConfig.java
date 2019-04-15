@@ -57,15 +57,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/user/**").hasAuthority("USER")
+                .antMatchers("/user/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated().and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .successHandler(successHandler).and()
-                .rememberMe();
+                .successHandler(successHandler);
 //        http.sessionManagement()
 //                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
@@ -77,11 +76,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         security.ignoring().antMatchers("/resources/**", "/static/**");
     }
 }
-
-
-/*
-http.csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/admin/**").hasAnyRole("ADMIN")
-        .antMatchers("/user/**").hasAnyRole("USER")
-        .anyRequest().authenticated()*/
