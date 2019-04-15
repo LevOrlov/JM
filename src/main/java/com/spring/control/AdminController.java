@@ -21,7 +21,7 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String notesList(Model model) {
         model.addAttribute("addUserObject", new User());
         return "thumhome";
@@ -55,7 +55,7 @@ public class AdminController {
     @RequestMapping(value = "/admin/delete/{id}", method = RequestMethod.GET)
     public String deleteContact(@PathVariable(required = false, name = "id") int id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)

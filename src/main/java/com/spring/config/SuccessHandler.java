@@ -29,7 +29,7 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
                     break;
                 case "ADMIN":
                     try {
-                        redirectStrategy.sendRedirect(arg0, arg1, "/");
+                        redirectStrategy.sendRedirect(arg0, arg1, "/admin");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

@@ -54,21 +54,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/resources/**").permitAll();
         http.authorizeRequests().antMatchers("/static/**").permitAll();
-        http.authorizeRequests().antMatchers("/", "/login").permitAll();
+        http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests()
-                .antMatchers("/")
-                .authenticated().and()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/user/**").hasAuthority("USER")
+                .anyRequest().authenticated().and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/thumhome")
-                .successHandler(successHandler);
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-        http.authorizeRequests().and()
-                .httpBasic();
+                .successHandler(successHandler).and()
+                .rememberMe();
+//        http.sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+
         http.csrf().disable();
     }
 

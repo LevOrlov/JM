@@ -51,7 +51,7 @@ function fire_ajax_submit() {
                 temp += '<td>' + value.id + '</td>';
                 temp += '<td>' + value.name + '</td>';
                 temp += '<td>' + value.login + '</td>';
-                temp += '<td>' + '<button onclick="display(this)"' + ' class="btn btn-info show-modal editbutton"' + 'data-id=' + value.id + ' >Edit</button>' + '  ' + '<a class="btn btn-danger" href="/admin/delete/' + value.id + '"' + '  role="button">Delete</a>' + '</td>';
+                temp += '<td>' + '<button onclick="display(this)"' + ' class="btn btn-info show-modal editbutton"' + 'data-id=' + value.id + ' >Edit</button>' + '  ' + '<a class="btn btn-danger" href="/admin/delete/' + value.id + '"' + '  type="button">Delete</a>' + '</td>';
                 temp += '</tr>';
             })
 
