@@ -12,10 +12,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
     @Autowired
     private AuthenticationSuccessHandler successHandler;
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -51,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/resources/**").permitAll();
         http.authorizeRequests().antMatchers("/static/**").permitAll();
-        http.authorizeRequests().antMatchers("/", "/signup", "/login").permitAll();
+        http.authorizeRequests().antMatchers("/", "/login").permitAll();
         http.authorizeRequests()
                 .antMatchers("/")
                 .authenticated().and()
@@ -61,13 +64,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/thumhome")
-                .successHandler(successHandler).and().rememberMe();
+                .successHandler(successHandler);
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+        http.authorizeRequests().and()
+                .httpBasic();
         http.csrf().disable();
     }
-
 
     @Override
     public void configure(WebSecurity security) {
         security.ignoring().antMatchers("/resources/**", "/static/**");
     }
 }
+
+
+/*
+http.csrf().disable()
+        .authorizeRequests()
+        .antMatchers("/admin/**").hasAnyRole("ADMIN")
+        .antMatchers("/user/**").hasAnyRole("USER")
+        .anyRequest().authenticated()*/

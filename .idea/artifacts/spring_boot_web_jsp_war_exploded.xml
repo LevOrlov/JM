@@ -82,6 +82,7 @@
           <element id="library" level="project" name="Maven: org.springframework.social:spring-social-google:1.0.0.RELEASE" />
           <element id="library" level="project" name="Maven: com.github.scribejava:scribejava-apis:5.5.0" />
           <element id="library" level="project" name="Maven: com.github.scribejava:scribejava-core:5.5.0" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.5" />
           <element id="library" level="project" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.1.1.RELEASE" />

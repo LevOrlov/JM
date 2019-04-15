@@ -22,7 +22,7 @@ public class SuccessHandler implements AuthenticationSuccessHandler {
             switch (authority.getAuthority()) {
                 case "USER":
                     try {
-                        redirectStrategy.sendRedirect(arg0, arg1, "/user1");
+                        redirectStrategy.sendRedirect(arg0, arg1, "/user");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

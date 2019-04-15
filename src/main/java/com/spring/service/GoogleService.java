@@ -1,14 +1,20 @@
+/*
 package com.spring.service;
 
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import com.google.gson.JsonObject;
+import com.spring.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 @Component
 public class GoogleService {
+    @Autowired
+    private UserService userService;
 
     private OAuth20Service service;
     private final String API_KEY = "348128802183-9si4susaehbqpqha53cfese2r6jt0dev.apps.googleusercontent.com";
@@ -25,12 +31,15 @@ public class GoogleService {
                 .build(GoogleApi20.instance());
     }
 
-
-
     public OAuth20Service getService() {
         return service;
     }
-    public void customAuth(String json){
 
+    public void createUser(JsonObject jsonObject){
+        User userFromJson = new User();
+        userFromJson.setLogin(jsonObject.get("email").toString());
+        userFromJson.setName(jsonObject.get("email").toString());
+        userService.addUser(userFromJson);
     }
-}
+
+}*/
