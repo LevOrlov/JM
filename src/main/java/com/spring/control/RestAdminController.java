@@ -17,14 +17,12 @@ public class RestAdminController {
 
 
     @RequestMapping(value = "/admin/getall", method = RequestMethod.POST)
-    public ArrayList<User> getSearchResultViaAjax() {
-        ArrayList users = (ArrayList<User>) userService.getAllUsers();
-        return users;
+    public ArrayList getSearchResultViaAjax() {
+        return (ArrayList<User>) userService.getAllUsers();
     }
 
     @RequestMapping(value = "/admin/edit/{id}", method = RequestMethod.GET)
     public User editId(@PathVariable(required = false, name = "id") int id) {
-        User tempUser = userService.getUserById(id);
-        return tempUser;
+        return userService.getUserById(id);
     }
 }

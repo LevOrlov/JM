@@ -22,7 +22,7 @@ public class AdminController {
     private UserService userService;
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String notesList(Model model) {
+    public String getAllUser(Model model) {
         model.addAttribute("addUserObject", new User());
         return "thumhome";
     }
@@ -32,8 +32,6 @@ public class AdminController {
         model.addAttribute("addUserObject", new User());
         return "login";
     }
-
-//todo куда отправляют ajax  запросы
 
     @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute User user) {

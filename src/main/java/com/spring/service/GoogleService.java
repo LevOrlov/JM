@@ -37,6 +37,7 @@ public class GoogleService {
         User userFromJson = new User();
         userFromJson.setLogin(jsonObject.get("email").toString().replace("\"", ""));
         userFromJson.setName(jsonObject.get("email").toString().replace("\"", ""));
+        userService.addUser(userFromJson);
 
     }
 

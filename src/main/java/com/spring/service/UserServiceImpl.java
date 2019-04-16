@@ -18,10 +18,10 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    static final String URL_USERS = "http://localhost:8080/rest";
-    static final String URL_ADD = "http://localhost:8080/rest/admin/add";
-    static final String URL_EDIT = "http://localhost:8080/rest/admin/edit/";
-    static final String URL_DEL = "http://localhost:8080/rest/admin/delete/";
+    private static final String URL_USERS = "http://localhost:8080/rest";
+    private static final String URL_ADD = "http://localhost:8080/rest/admin/add";
+    private static final String URL_EDIT = "http://localhost:8080/rest/admin/edit/";
+    private static final String URL_DEL = "http://localhost:8080/rest/admin/delete/";
     @Autowired
     private PasswordEncoder passwordEncoder;
 
