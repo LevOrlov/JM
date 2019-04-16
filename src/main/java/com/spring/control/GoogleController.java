@@ -1,4 +1,3 @@
-/*
 package com.spring.control;
 
 
@@ -24,23 +23,19 @@ import javax.servlet.http.HttpServletResponse;
 public class GoogleController {
 
     @Autowired
-    private GoogleService service;
-    @Autowired
     UserService userService;
-
-
+    @Autowired
+    private GoogleService service;
 
     @GetMapping(value = "/me/google")
     public void me(HttpServletResponse response) {
         String auth = service.getService().getAuthorizationUrl();
-
         response.setHeader("Location", auth);
         response.setStatus(302);
-
     }
 
     @GetMapping(value = "/auth/google")
-    public String google(@RequestParam String code, HttpServletResponse servletResponse){
+    public String google(@RequestParam String code, HttpServletResponse servletResponse) {
 
         try {
             OAuth2AccessToken token = service.getService().getAccessToken(code);
@@ -49,10 +44,10 @@ public class GoogleController {
             Response response = service.getService().execute(request);
             JsonObject jsonObject = new JsonParser().parse(response.getBody()).getAsJsonObject();
             service.createUser(jsonObject);
-            SecurityContextHolder.getContext().setAuthentication(new UserAuthentication(userService.getUserByLogin(jsonObject.get("email").toString())));
-            return "redirect:/";
+            SecurityContextHolder.getContext().setAuthentication(new UserAuthentication(userService.getUserByLogin(jsonObject.get("email").toString().replace("\"", ""))));
+            return "redirect:/user";
 
-        }catch (Exception e){
+        } catch (Exception e) {
             servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
@@ -60,4 +55,3 @@ public class GoogleController {
     }
 
 }
-*/

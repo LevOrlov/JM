@@ -26,6 +26,7 @@ public class AdminController {
         model.addAttribute("addUserObject", new User());
         return "thumhome";
     }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
         model.addAttribute("addUserObject", new User());
@@ -41,7 +42,7 @@ public class AdminController {
         tempUser.setLogin(user.getLogin());
         tempUser.setPassword(user.getPassword());
         userService.updateUser(tempUser);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @RequestMapping(value = "/logout")
@@ -53,7 +54,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/delete/{id}", method = RequestMethod.GET)
-    public String deleteContact(@PathVariable(required = false, name = "id") int id) {
+    public String deleteUser(@PathVariable(required = false, name = "id") int id) {
         userService.deleteUser(id);
         return "redirect:/admin";
     }
@@ -61,6 +62,6 @@ public class AdminController {
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
     public String addModal(@ModelAttribute(value = "user") User user) {
         userService.addUser(user);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 }

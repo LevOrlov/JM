@@ -68,13 +68,6 @@ public class UserServiceImpl implements UserService {
         return response.getBody();
     }
 
-    public ResponseEntity<ArrayList> getAllUsers1() {
-        HttpEntity<String> request = new HttpEntity<>(getHeaders());
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<ArrayList> response = restTemplate.exchange(URL_USERS, HttpMethod.GET, request, ArrayList.class);
-        return response;
-    }
-
 
     @Override
     public User getUserById(int userId) {
@@ -83,14 +76,6 @@ public class UserServiceImpl implements UserService {
         String getUser = "http://localhost:8080/rest/user/" + userId;
         ResponseEntity<User> response = restTemplate.exchange(getUser, HttpMethod.POST, request, User.class);
         return response.getBody();
-    }
-
-    @Override
-    public ResponseEntity<User> getUserById1(int userId) {
-        HttpEntity<String> request = new HttpEntity<>(getHeaders());
-        RestTemplate restTemplate = new RestTemplate();
-        String getUser = "http://localhost:8080/rest/user/" + userId;
-        return restTemplate.exchange(getUser, HttpMethod.POST, request, User.class);
     }
 
 

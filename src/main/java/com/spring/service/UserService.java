@@ -1,9 +1,7 @@
 package com.spring.service;
 
 import com.spring.model.User;
-import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface UserService {
@@ -18,8 +16,4 @@ public interface UserService {
     User getUserById(int userId);
 
     User getUserByLogin(String login);
-
-    ResponseEntity<ArrayList> getAllUsers1();
-
-    ResponseEntity<User> getUserById1(int userId);
 }
