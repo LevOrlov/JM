@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
-//todo почитать про o2auth
 @Controller
 public class GoogleController {
 

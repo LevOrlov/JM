@@ -34,8 +34,6 @@ function display(obj) {
 }
 
 function fire_ajax_submit() {
-//todo передавать в дисплей сразу id
-    //todo повесить fire_ajax_submit на onlick в 185 строке thumhome
     $.ajax({
         type: "POST",
         contentType: "application/json",
