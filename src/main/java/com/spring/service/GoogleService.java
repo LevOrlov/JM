@@ -6,19 +6,31 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 import com.google.gson.JsonObject;
 import com.spring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 @Component
+@PropertySource("classpath:application.properties")
 public class GoogleService {
-    private final String API_KEY = "348128802183-9si4susaehbqpqha53cfese2r6jt0dev.apps.googleusercontent.com";
-    private final String API_SECRET = "Rr_RM0rEF5ajCqBuJnePe_-T";
-    private final String SCOPE = "https://www.googleapis.com/auth/userinfo.email";
-    private final String CALLBACK = "http://localhost:8090/auth/google";
-    @Autowired
-    private UserService userService;
+
+    @Value("${API_KEY}")
+    private String API_KEY;
+    @Value("${API_SECRET}")
+    private String API_SECRET;
+    @Value("${SCOPE}")
+    private String SCOPE;
+    @Value("${CALLBACK}")
+    private String CALLBACK;
+    private final UserService userService;
     private OAuth20Service service;
+
+    @Autowired
+    public GoogleService(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostConstruct
     private void init() {

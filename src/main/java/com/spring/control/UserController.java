@@ -14,8 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
+
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public ModelAndView userPage() {

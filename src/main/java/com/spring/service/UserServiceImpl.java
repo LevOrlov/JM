@@ -22,8 +22,12 @@ public class UserServiceImpl implements UserService {
     private static final String URL_ADD = "http://localhost:8080/rest/admin/add";
     private static final String URL_EDIT = "http://localhost:8080/rest/admin/edit/";
     private static final String URL_DEL = "http://localhost:8080/rest/admin/delete/";
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserServiceImpl(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     private static HttpHeaders getHeaders() {
         String plainCredentials = "admin:admin";

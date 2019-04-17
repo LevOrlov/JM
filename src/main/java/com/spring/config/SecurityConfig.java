@@ -25,9 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Qualifier("myUserDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
-    @Autowired
-    private AuthenticationSuccessHandler successHandler;
 
+    private final AuthenticationSuccessHandler successHandler;
+
+    @Autowired
+    public SecurityConfig(AuthenticationSuccessHandler successHandler) {
+        this.successHandler = successHandler;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -63,7 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .successHandler(successHandler);
+                .successHandler(successHandler).and()
+                .logout();
         http.csrf().disable();
     }
 
