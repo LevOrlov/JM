@@ -23,12 +23,12 @@ public class RestAdminController {
 
     @RequestMapping(value = "/admin/getall", method = RequestMethod.POST)
     public ResponseEntity getAll() {
-        return new ResponseEntity<>((ArrayList) userService.getAllUsers(), HttpStatus.OK);
+        return new ResponseEntity(userService.getAllUsers(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/admin/edit/{id}", method = RequestMethod.GET)
     public ResponseEntity editId(@PathVariable(required = false, name = "id") int id) {
-        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+        return new ResponseEntity(userService.getUserById(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
@@ -40,7 +40,7 @@ public class RestAdminController {
         userService.updateUser(tempUser);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(URI.create("/admin"));
-        return new ResponseEntity<Void>(headers, HttpStatus.MOVED_PERMANENTLY);
+        return new ResponseEntity(headers, HttpStatus.MOVED_PERMANENTLY);
     }
 
     @RequestMapping(value = "/admin/delete/{id}", method = RequestMethod.GET)
@@ -48,15 +48,15 @@ public class RestAdminController {
         userService.deleteUser(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(URI.create("/admin"));
-        return new ResponseEntity<Void>(headers, HttpStatus.MOVED_PERMANENTLY);
+        return new ResponseEntity(headers, HttpStatus.MOVED_PERMANENTLY);
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
-    public ResponseEntity<Void> addModal(@ModelAttribute(value = "user") User user) {
+    public ResponseEntity addModal(@ModelAttribute(value = "user") User user) {
         userService.addUser(user);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(URI.create("/admin"));
-        return new ResponseEntity<Void>(headers, HttpStatus.MOVED_PERMANENTLY);
+        return new ResponseEntity(headers, HttpStatus.MOVED_PERMANENTLY);
 
     }
 }
