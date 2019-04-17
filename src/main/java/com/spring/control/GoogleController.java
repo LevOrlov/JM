@@ -42,7 +42,6 @@ public class GoogleController {
 
     @GetMapping(value = "/auth/google")
     public String google(@RequestParam String code, HttpServletResponse servletResponse) {
-        //TODO добавить редирект  на admin после добавление роли админ.
         try {
             OAuth2AccessToken token = service.getService().getAccessToken(code);
             OAuthRequest request = new OAuthRequest(Verb.GET, "https://www.googleapis.com/oauth2/v1/userinfo?alt=json");
