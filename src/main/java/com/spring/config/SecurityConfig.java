@@ -22,15 +22,14 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @ComponentScan("com.spring")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Qualifier("myUserDetailsService")
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
     private final AuthenticationSuccessHandler successHandler;
 
     @Autowired
-    public SecurityConfig(AuthenticationSuccessHandler successHandler) {
+    public SecurityConfig(AuthenticationSuccessHandler successHandler, @Qualifier("myUserDetailsService") UserDetailsService userDetailsService) {
         this.successHandler = successHandler;
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean

@@ -24,7 +24,9 @@ public class GoogleService {
     private String SCOPE;
     @Value("${CALLBACK}")
     private String CALLBACK;
-    private final UserService userService;
+
+    private UserService userService;
+
     private OAuth20Service service;
 
     @Autowired

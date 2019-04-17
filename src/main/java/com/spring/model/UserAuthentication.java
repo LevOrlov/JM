@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public class UserAuthentication implements Authentication {
 
-    private final User user;
+    private User user;
     private boolean authenticated = true;
 
     public UserAuthentication(User user) {

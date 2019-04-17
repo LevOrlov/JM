@@ -3,8 +3,8 @@ package com.spring.service;
 
 import com.spring.model.User;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,12 +22,13 @@ public class UserServiceImpl implements UserService {
     private static final String URL_ADD = "http://localhost:8080/rest/admin/add";
     private static final String URL_EDIT = "http://localhost:8080/rest/admin/edit/";
     private static final String URL_DEL = "http://localhost:8080/rest/admin/delete/";
-    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UserServiceImpl(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    private PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl() {
+        passwordEncoder = new BCryptPasswordEncoder();
     }
+
 
     private static HttpHeaders getHeaders() {
         String plainCredentials = "admin:admin";

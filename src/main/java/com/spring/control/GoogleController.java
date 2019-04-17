@@ -57,7 +57,6 @@ public class GoogleController {
                 if (role.getAuthority().equals("ADMIN")) {
                     return "redirect:/admin";
                 }
-
             }
             return "redirect:/user";
 
